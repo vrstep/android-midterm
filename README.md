@@ -11,4 +11,4 @@ This app displays my favorite football players using Jetpack Compose.
 <img src="screenshots/playerlist.jpg" width="300">
 
 ### 🔄 Expanded View
-<img src="screenshots/playerlist.jpg" width="300">
+<img src="screenshots/expanded.jpg" width="300">
