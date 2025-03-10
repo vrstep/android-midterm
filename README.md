@@ -5,10 +5,10 @@ This app displays my favorite football players using Jetpack Compose.
 ## 📸 Screenshots
 
 ### 🏠 Home Screen
-![Home Screen](screenshots/homepage.jpg)
+<img src="screenshots/homepage.jpg" width="300">
 
 ### 📋 Player List
-![Player List](screenshots/playerlist.jpg)
+<img src="screenshots/playerlist.jpg" width="300">
 
 ### 🔄 Expanded View
-![Expanded View](screenshots/playerlist.jpg)
+<img src="screenshots/playerlist.jpg" width="300">
