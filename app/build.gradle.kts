@@ -41,6 +41,11 @@ android {
 
 dependencies {
 
+    implementation("androidx.compose.material3:material3:1.2.0")
+    implementation("androidx.compose.foundation:foundation:1.6.0")
+    implementation("androidx.navigation:navigation-compose:2.7.6")
+    implementation("com.google.accompanist:accompanist-pager:0.32.0")
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
