@@ -2,6 +2,8 @@
 
 This app displays my favorite football players using Jetpack Compose.
 
+Extra functionality, when user clicks on image card the wikipedia page of that players opens
+
 ## 📸 Screenshots
 
 ### 🏠 Home Screen
