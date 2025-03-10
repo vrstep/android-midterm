@@ -25,10 +25,13 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun ImagesScreen() {
     val images = listOf(
-        "https://example.com/player1.jpg",
-        "https://example.com/player2.jpg",
-        "https://example.com/player3.jpg",
-        "https://example.com/player4.jpg"
+        "https://assets.laliga.com/squad/2024/t178/p593109/2048x2225/p593109_t178_2024_1_001_000.png",
+        "https://assets.laliga.com/squad/2024/t178/p490541/2048x2225/p490541_t178_2024_1_001_000.png",
+        "https://assets.laliga.com/squad/2024/t178/p219961/2048x2225/p219961_t178_2024_1_001_000.png",
+        "https://assets.laliga.com/squad/2024/t178/p56764/2048x2225/p56764_t178_2024_1_001_000.png",
+        "https://assets.laliga.com/squad/2024/t178/p209712/2048x2225/p209712_t178_2024_1_001_000.png",
+        "https://assets.laliga.com/squad/2024/t178/p224444/2048x2225/p224444_t178_2024_1_001_000.png",
+        "https://assets.laliga.com/squad/2024/t178/p593110/2048x2225/p593110_t178_2024_1_001_000.png"
     )
 
     var expanded by remember { mutableStateOf(false) }
