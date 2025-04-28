@@ -16,28 +16,28 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.room.Room
+import kz.vrstep.android_midterm.data.local.AppDatabase
 import kz.vrstep.android_midterm.domain.model.Player
+import kz.vrstep.android_midterm.viewmodel.PlayersViewModel
+import org.koin.androidx.compose.koinViewModel
+
 
 @Composable
-fun ImagesScreen() {
-    val players = listOf(
-        Player("Lamine Yamal", "Forward", "Spain", "Barcelona", "https://en.wikipedia.org/wiki/Lamine_Yamal", "https://assets.laliga.com/squad/2024/t178/p593109/2048x2225/p593109_t178_2024_1_001_000.png"),
-        Player("Pedri", "Midfielder", "Spain", "Barcelona", "https://en.wikipedia.org/wiki/Pedri", "https://assets.laliga.com/squad/2024/t178/p490541/2048x2225/p490541_t178_2024_1_001_000.png"),
-        Player("Raphinha", "Winger", "Brazil", "Barcelona", "https://en.wikipedia.org/wiki/Raphinha", "https://assets.laliga.com/squad/2024/t178/p219961/2048x2225/p219961_t178_2024_1_001_000.png"),
-        Player("Lewandowski", "Forward", "Poland", "Barcelona", "https://en.wikipedia.org/wiki/Robert_Lewandowski", "https://assets.laliga.com/squad/2024/t178/p56764/2048x2225/p56764_t178_2024_1_001_000.png"),
-        Player("De Jong", "Midfielder", "Dutch", "Barcelona", "https://en.wikipedia.org/wiki/Frenkie_de_Jong", "https://assets.laliga.com/squad/2024/t178/p209712/2048x2225/p209712_t178_2024_1_001_000.png"),
-        Player("Ferran", "Forward", "Spain", "Barcelona", "https://en.wikipedia.org/wiki/Ferran_Torres", "https://assets.laliga.com/squad/2024/t178/p224444/2048x2225/p224444_t178_2024_1_001_000.png"),
-        Player("Cubarsi", "Defender", "Spain", "Barcelona", "https://en.wikipedia.org/wiki/Pau_Cubars%C3%AD", "https://assets.laliga.com/squad/2024/t178/p593110/2048x2225/p593110_t178_2024_1_001_000.png")
-    )
+fun ImagesScreen(viewModel: PlayersViewModel = koinViewModel()) {
+    val players = viewModel.players.collectAsState().value
 
     var expanded by remember { mutableStateOf(false) }
 
@@ -47,8 +47,7 @@ fun ImagesScreen() {
     ) {
         Text(
             text = "My Favorite Football Team",
-            fontSize = 22.sp,
-            fontWeight = FontWeight.Bold
+            fontSize = 22.sp
         )
 
         Spacer(modifier = Modifier.height(8.dp))
@@ -61,19 +60,17 @@ fun ImagesScreen() {
         Spacer(modifier = Modifier.height(16.dp))
 
         if (!expanded) {
-            // Horizontal carousel (first 3 images, last one slightly visible)
             LazyRow(
                 modifier = Modifier.fillMaxWidth(),
                 contentPadding = PaddingValues(horizontal = 16.dp),
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 itemsIndexed(players.take(3)) { index, player ->
-                    val width = if (index == 2) 180.dp else 200.dp // Show glimpse of 3rd image
+                    val width = if (index == 2) 180.dp else 200.dp
                     ImageCard(player.imageUrl, player.wikiUrl, width)
                 }
             }
         } else {
-            // Grid layout (2 images per row) with equal-sized columns
             LazyColumn(
                 modifier = Modifier.fillMaxWidth(),
                 verticalArrangement = Arrangement.spacedBy(8.dp),
@@ -87,13 +84,12 @@ fun ImagesScreen() {
                         rowPlayers.forEach { player ->
                             Box(
                                 modifier = Modifier
-                                    .weight(1f) // Ensures equal width for both images
+                                    .weight(1f)
                             ) {
                                 ImageCard(player.imageUrl, player.wikiUrl, width = 160.dp)
                             }
                         }
                         if (rowPlayers.size == 1) {
-                            // If there's an odd number of items, add an empty spacer to balance the row
                             Spacer(modifier = Modifier.weight(1f))
                         }
                     }
@@ -103,7 +99,6 @@ fun ImagesScreen() {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Ensure button is always visible
         Button(onClick = { expanded = !expanded }) {
             Text(if (expanded) "Collapse" else "Show All")
         }

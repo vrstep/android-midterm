@@ -54,12 +54,17 @@ dependencies {
 
     implementation("androidx.room:room-runtime:$room_version")
 
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")
+
     // If this project uses any Kotlin source, use Kotlin Symbol Processing (KSP)
     // See Add the KSP plugin to your project
     ksp("androidx.room:room-compiler:$room_version")
 
     // Koin for Android
     implementation("io.insert-koin:koin-android:$koin_version")
+    // Koin for Android
+    implementation("io.insert-koin:koin-androidx-compose:$koin_version")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
