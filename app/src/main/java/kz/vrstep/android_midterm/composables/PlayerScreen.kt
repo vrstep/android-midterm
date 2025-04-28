@@ -7,7 +7,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import kz.vrstep.android_midterm.model.Player
+import kz.vrstep.android_midterm.domain.model.Player
 
 @Composable
 fun PlayersScreen() {

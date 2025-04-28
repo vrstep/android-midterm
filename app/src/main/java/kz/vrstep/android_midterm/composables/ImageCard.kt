@@ -43,21 +43,3 @@ fun ImageCard(imageUrl: String, wikiUrl: String, width: Dp) {
         )
     }
 }
-
-
-//@Composable
-//fun ImageCard(imageUrl: String, width: Dp) {
-//    Card(
-//        modifier = Modifier
-//            .width(width)
-//            .height(250.dp)
-//            .clip(RoundedCornerShape(16.dp)),
-//        colors = CardDefaults.cardColors(containerColor = Color.LightGray)
-//    ) {
-//        AsyncImage(
-//            model = imageUrl,
-//            contentDescription = null,
-//            modifier = Modifier.fillMaxSize()
-//        )
-//    }
-//}
